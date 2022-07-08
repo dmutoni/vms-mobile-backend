@@ -184,9 +184,8 @@ const incrementVotes = async (req, res) => {
 
 // function to check if the user has already voted that candidate
 const checkIfVoted = async (candidateId, userId) => {
-
         const candidate = await Candidate.findById(candidateId);
-        const voted = await VotedUser.find({candidate: candidateId, votedUser: userId});
+        const voted = await VotedUser.find({votedUser: userId});
         if (voted.length <= 0){
             return false;
         }else {
